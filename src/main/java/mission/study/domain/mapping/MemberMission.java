@@ -5,6 +5,7 @@ import lombok.*;
 import mission.study.domain.Member;
 import mission.study.domain.Mission;
 import mission.study.domain.common.BaseEntity;
+import mission.study.domain.enums.MissionStatus;
 
 @Entity
 @Getter
@@ -26,6 +27,7 @@ public class MemberMission extends BaseEntity {
 
 
 
-    @Column(nullable = false, length = 15)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15)")
+    private MissionStatus missionStatus;
 }
