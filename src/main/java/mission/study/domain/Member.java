@@ -36,7 +36,7 @@ public class Member extends BaseEntity {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private MemberStatus memberStatus;
 
     private LocalDate inactive_date;
@@ -44,6 +44,7 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 5)
     private String email;
 
+    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
     private Integer point;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
