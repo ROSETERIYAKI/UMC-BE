@@ -8,6 +8,9 @@ import mission.study.domain.enums.MemberStatus;
 import mission.study.domain.mapping.MemberAgree;
 import mission.study.domain.mapping.MemberMission;
 import mission.study.domain.mapping.MemberPrefer;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +18,8 @@ import java.util.List;
 
 @Entity
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -31,6 +36,9 @@ public class Member extends BaseEntity {
     private Gender gender;
 
     private Integer age;
+    private Integer birthYear;
+    private Integer birthMonth;
+    private Integer birthDay;
 
     @Column(nullable = false, length = 40)
     private String address;
@@ -41,10 +49,10 @@ public class Member extends BaseEntity {
 
     private LocalDate inactive_date;
 
-    @Column(nullable = false, length = 5)
+//    @Column(nullable = false, length = 5)
     private String email;
 
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
+    @ColumnDefault("0")
     private Integer point;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
