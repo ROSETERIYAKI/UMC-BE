@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.exception.handler.StoreHandler;
 import umc.spring.domain.Mission;
+import umc.spring.domain.Region;
 import umc.spring.domain.Store;
 import umc.spring.repository.MissionRepository;
 import umc.spring.repository.StoreRepository;
@@ -21,12 +22,14 @@ public class MissionCommandServiceImpl implements MissionCommandService{
     @Transactional
     public Mission createMission(MissionRequestDTO.MissionCreateDTO request, Long storeId) {
         Store store = storeRepository.findById(storeId).orElseThrow(() -> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
+        Region region = store.getRegion();
 
         Mission mission = Mission.builder()
                 .reward(request.getReward())
                 .missionSpec(request.getMissionSpec())
                 .deadline(request.getDeadline())
                 .store(store)
+                .region(region)
                 .build();
 
         return missionRepository.save(mission);
