@@ -16,4 +16,14 @@ public class StoreRequestDTO {
         @NotNull
         Long region;
     }
+
+    @Getter
+    public static class addReviewDTO {
+        @NotBlank
+        String title;
+        @NotBlank
+        String content;
+        @NotNull
+        Float Score;
+    }
 }
