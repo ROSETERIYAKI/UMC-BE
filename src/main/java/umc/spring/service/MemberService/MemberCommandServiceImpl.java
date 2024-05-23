@@ -25,7 +25,7 @@ public class MemberCommandServiceImpl implements MemberCommandService{
     private final FoodCategoryRepository foodCategoryRepository;
     @Override
     @Transactional
-    public Member joinMember(MemberRequestDTO.JoinDto request) {
+    public Member joinMember(MemberRequestDTO.MemberJoinDto request) {
 
         Member newMember = MemberConverter.toMember(request);
         List<FoodCategory> foodCategoryList = request.getPreferCategory().stream()
