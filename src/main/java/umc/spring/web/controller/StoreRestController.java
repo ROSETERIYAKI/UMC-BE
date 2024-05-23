@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.converter.StoreConverter;
+import umc.spring.domain.Mission;
 import umc.spring.domain.Review;
 import umc.spring.domain.Store;
 import umc.spring.service.StoreService.StoreCommandService;
@@ -30,5 +31,12 @@ public class StoreRestController {
                                                                       @RequestParam(name = "memberId") Long memberId){
         Review review = storeCommandService.addReview(request, storeId, memberId);
         return ApiResponse.onSuccess(StoreConverter.toAddReviewDTO(review));
+    }
+
+    @PostMapping("/{storeId}/missions")
+    public ApiResponse<StoreResponseDTO.addMissionResultDTO> addMission(@RequestBody @Valid StoreRequestDTO.addMissionDTO request,
+                                                                        @PathVariable(name="storeId") Long storeId) {
+        Mission mission = storeCommandService.addMission(request,storeId);
+        return ApiResponse.onSuccess(StoreConverter.toAddMissionDTO(mission));
     }
 }
