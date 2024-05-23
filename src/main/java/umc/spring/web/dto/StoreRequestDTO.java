@@ -1,0 +1,19 @@
+package umc.spring.web.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+
+public class StoreRequestDTO {
+    @Getter
+    public static class addDTO {
+        @NotBlank
+        String name;
+        @NotNull
+        @Size(max = 40)
+        String address;
+        @NotNull
+        Long region;
+    }
+}

@@ -32,8 +32,8 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // Store Error
 
-    STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE_4001","가게가 없습니다.");
-
+    STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE_4001","가게가 없습니다."),
+    STORE_REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE_REGION_4001","가게의 지역 등록이 안되었습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
