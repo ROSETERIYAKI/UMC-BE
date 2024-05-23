@@ -5,4 +5,6 @@ import umc.spring.web.dto.StoreRequestDTO;
 
 public interface StoreCommandService {
     Store createStore(StoreRequestDTO.StoreInfoDto request, Long regionId);
+
+    boolean existsStore(Long storeId);
 }
