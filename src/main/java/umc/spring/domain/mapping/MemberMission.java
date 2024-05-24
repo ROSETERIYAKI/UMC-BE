@@ -2,10 +2,12 @@ package umc.spring.domain.mapping;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import umc.spring.domain.Member;
 import umc.spring.domain.Mission;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.MissionStatus;
-import umc.spring.domain.Member;
 
 
 @Entity
@@ -13,6 +15,8 @@ import umc.spring.domain.Member;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class MemberMission extends BaseEntity {
 
     @Id
@@ -29,4 +33,12 @@ public class MemberMission extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mission_id")
     private Mission mission;
+
+    public void setMission(Mission mission) {
+        if (this.mission != null) {
+            mission.getMemberMissionList().remove(this);
+        }
+        this.mission = mission;
+        mission.getMemberMissionList().add(this);
+    }
 }

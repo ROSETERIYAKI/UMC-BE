@@ -14,7 +14,16 @@ public class MissionResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class CreateMissionResultDto {
-        Long missionId;
-        LocalDateTime createdAt;
+        private Long missionId;
+        private LocalDateTime createdAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ChallengeMissionResultDto {
+        private Long memberMissionId;
+        private LocalDateTime createdAt;
     }
 }
