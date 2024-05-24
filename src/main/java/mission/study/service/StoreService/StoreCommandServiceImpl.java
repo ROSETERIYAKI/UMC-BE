@@ -17,7 +17,7 @@ public class StoreCommandServiceImpl implements StoreCommandService{
     private final StoreRepository storeRepository;
     private final RegionRepository regionRepository;
     @Override
-    public Store joinStore(StoreRequestDTO.JoinDTO request) {
+    public Store joinStore(StoreRequestDTO.JoinStoreDTO request) {
         Store store = StoreConverter.toStore(request);
         Region region = regionRepository.findById(request.getRegion()).orElseThrow(() -> new FoodCategoryHandler(ErrorStatus.REGION_NOT_FOUND));
         store.setRegion(region);

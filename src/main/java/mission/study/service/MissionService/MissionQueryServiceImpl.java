@@ -1,4 +1,4 @@
-package mission.study.service.MIssionService;
+package mission.study.service.MissionService;
 
 import lombok.RequiredArgsConstructor;
 import mission.study.apiPayload.code.status.ErrorStatus;

@@ -1,17 +1,17 @@
 package mission.study.web.dto;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import mission.study.validation.annotation.ExistStores;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class MissionRequestDTO {
     @Getter
-    public static class JoinDTO {
+    public static class JoinMissionDTO {
+        Integer reward;
         LocalDate deadLine;
         String mission_spec;
-        @NotNull
+        @ExistStores
         Long store;
     }
 }

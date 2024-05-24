@@ -3,8 +3,6 @@ package mission.study.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import mission.study.domain.common.BaseEntity;
-import mission.study.domain.enums.MemberStatus;
-import mission.study.domain.enums.Reward;
 import mission.study.domain.mapping.MemberMission;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -30,9 +28,7 @@ public class Mission extends BaseEntity {
     @JoinColumn(name = "store_id")
     private Store store;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'NOT_STARTED'")
-    private Reward reward;
+    private Integer reward;
 
     private LocalDate deadLine;
 

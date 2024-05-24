@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/stores")
 @RequiredArgsConstructor
-public class StoreController {
+public class StoreRestController {
     private final StoreCommandService storeCommandService;
 
     @PostMapping("/")
-    public ApiResponse<StoreResponseDTO.JoinResultDTO> join(@RequestBody @Valid StoreRequestDTO.JoinDTO request) {
+    public ApiResponse<StoreResponseDTO.JoinResultDTO> join(@RequestBody @Valid StoreRequestDTO.JoinStoreDTO request) {
         Store store = storeCommandService.joinStore(request);
         return ApiResponse.onSuccess(StoreConverter.toJoinResultDTO(store));
     }

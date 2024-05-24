@@ -1,7 +1,6 @@
 package mission.study.converter;
 
 import mission.study.domain.Mission;
-import mission.study.domain.enums.Reward;
 import mission.study.web.dto.MissionRequestDTO;
 import mission.study.web.dto.MissionResponseDTO;
 
@@ -15,17 +14,11 @@ public class MissionConverter {
                 .build();
     }
 
-    public static Mission toMission(MissionRequestDTO.JoinDTO request) {
+    public static Mission toMission(MissionRequestDTO.JoinMissionDTO request) {
         return Mission.builder()
+                .reward(request.getReward())
                 .deadLine(request.getDeadLine())
                 .mission_spec(request.getMission_spec())
-                .build();
-    }
-
-    public static MissionResponseDTO.ChangeRewardResultDTO toChangeRewardResultDTO(Mission mission) {
-        return MissionResponseDTO.ChangeRewardResultDTO.builder()
-                .missionId(mission.getId())
-                .updatedAt(LocalDateTime.now())
                 .build();
     }
 }

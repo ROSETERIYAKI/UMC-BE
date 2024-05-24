@@ -18,7 +18,7 @@ public class MemberConverter {
     }
 
     // DTO -> entity
-    public static Member toMember(MemberRequestDTO.JoinDto request) {
+    public static Member toMember(MemberRequestDTO.JoinMemberDTO request) {
         Gender gender = null;
         switch (request.getGender()) {
             case 1:

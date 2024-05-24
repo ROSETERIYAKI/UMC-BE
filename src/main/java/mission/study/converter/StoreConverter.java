@@ -14,7 +14,7 @@ public class StoreConverter {
                 .build();
     }
 
-    public static Store toStore(StoreRequestDTO.JoinDTO request) {
+    public static Store toStore(StoreRequestDTO.JoinStoreDTO request) {
         // 입력으로 받은 DTO 에서 region 을 제외한 값들로 엔티티 생성
         return Store.builder()
                 .name(request.getName())

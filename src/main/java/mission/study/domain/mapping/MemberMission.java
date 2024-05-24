@@ -6,10 +6,15 @@ import mission.study.domain.Member;
 import mission.study.domain.Mission;
 import mission.study.domain.common.BaseEntity;
 import mission.study.domain.enums.MissionStatus;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Getter
+@Setter
 @Builder
+@DynamicInsert
+@DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class MemberMission extends BaseEntity {
@@ -28,6 +33,20 @@ public class MemberMission extends BaseEntity {
 
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'IN_PROGRESS'")
     private MissionStatus missionStatus;
+
+    public void setMember(Member member) {
+        if (this.member != null)
+            member.getMemberMissionList().remove(this);
+        this.member = member;
+        member.getMemberMissionList().add(this);
+    }
+
+    public void setMission(Mission mission) {
+        if (this.mission != null)
+            mission.getMemberMissionList().remove(this);
+        this.mission = mission;
+        mission.getMemberMissionList().add(this);
+    }
 }

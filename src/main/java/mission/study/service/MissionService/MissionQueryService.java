@@ -1,4 +1,4 @@
-package mission.study.service.MIssionService;
+package mission.study.service.MissionService;
 
 import mission.study.domain.Mission;
 

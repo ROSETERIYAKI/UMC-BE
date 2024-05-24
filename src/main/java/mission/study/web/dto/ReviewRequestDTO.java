@@ -5,7 +5,7 @@ import lombok.Getter;
 
 public class ReviewRequestDTO {
     @Getter
-    public static class JoinDTO {
+    public static class JoinReviewDTO {
         @NotNull
         String body;
         Float score;

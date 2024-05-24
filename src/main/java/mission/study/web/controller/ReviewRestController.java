@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
-public class ReviewController {
+public class ReviewRestController {
     private final ReviewCommandService reviewCommandService;
 
     @PostMapping("/")
-    public ApiResponse<ReviewResponseDTO.JoinResultDTO> join(@RequestBody @Valid ReviewRequestDTO.JoinDTO request) {
+    public ApiResponse<ReviewResponseDTO.JoinResultDTO> join(@RequestBody @Valid ReviewRequestDTO.JoinReviewDTO request) {
         Review review = reviewCommandService.joinReview(request);
         return ApiResponse.onSuccess(ReviewConverter.toJoinDTO(review));
     }

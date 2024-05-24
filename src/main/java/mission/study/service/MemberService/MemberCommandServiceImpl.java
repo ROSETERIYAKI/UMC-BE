@@ -23,7 +23,7 @@ public class MemberCommandServiceImpl implements MemberCommandService{
     private final FoodCategoryRepository foodCategoryRepository;
 
     @Override
-    public Member joinMember(MemberRequestDTO.JoinDto request) {
+    public Member joinMember(MemberRequestDTO.JoinMemberDTO request) {
         Member newMember = MemberConverter.toMember(request);
         List<FoodCategory> foodCategoryList = request.getPreferCategory().stream()
                 .map(category -> {
