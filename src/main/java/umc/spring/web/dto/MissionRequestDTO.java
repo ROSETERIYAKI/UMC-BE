@@ -8,8 +8,14 @@ public class MissionRequestDTO {
     @Getter
     public static class CreateMissionDto {
         @NotNull
-        Integer reward;
+        private Integer reward;
         @NotNull
-        String missionSpec;
+        private String missionSpec;
+    }
+
+    @Getter
+    public static class ChallengeMissionDto {
+        @NotNull
+        private Long memberId;
     }
 }
