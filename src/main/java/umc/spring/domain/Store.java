@@ -39,10 +39,19 @@ public class Store extends BaseEntity {
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
-    
+
+    // 여기서 missionList 추가
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Mission> missionList = new ArrayList<>();
+
     // 가게 만들때 지역 넣기
     public void setRegion(Region region) {
         this.region = region;
         region.getStoreList().add(this);
+    }
+
+    // missionList의 Getter 메서드
+    public List<Mission> getMissionList() {
+        return missionList;
     }
 }
