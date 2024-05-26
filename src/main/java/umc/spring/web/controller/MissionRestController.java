@@ -15,6 +15,7 @@ import umc.spring.web.dto.MissionResponseDTO;
 public class MissionRestController {
     private final MissionCommandService missionCommandService;
 
+    // 미션 생성 API
     @PostMapping("/stores/{storeId}")
     public ApiResponse<MissionResponseDTO.MissionResultDTO> createMission(@RequestBody MissionRequestDTO.MissionCreateDTO request, @PathVariable(name = "storeId")Long storeId){
         Mission mission = missionCommandService.createMission(request, storeId);

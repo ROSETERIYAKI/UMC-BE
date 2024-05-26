@@ -15,6 +15,7 @@ import umc.spring.web.dto.StoreResponseDTO;
 public class StoreRestController {
     private final StoreCommandService storeCommandService;
 
+    // Store 생성
     @PostMapping("/regions/{regionId}")
     public ApiResponse<StoreResponseDTO.StoreResultDTO> createStore(@RequestBody StoreRequestDTO.StoreInfoDto request, @PathVariable(name = "regionId") Long regionId){
         Store store = storeCommandService.createStore(request, regionId);

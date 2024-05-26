@@ -1,9 +1,9 @@
-package umc.spring.service.MemberService;
+package umc.spring.service.StoreService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MemberQueryServiceImpl implements MemberQueryService{
+public class StoreQueryServiceImpl implements StoreQueryService{
 }
