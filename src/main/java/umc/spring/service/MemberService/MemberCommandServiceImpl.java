@@ -2,8 +2,10 @@ package umc.spring.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
+import org.aspectj.apache.bcel.classfile.Code;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import umc.spring.apiPayload.code.BaseCode;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.apiPayload.exception.handler.FoodCategoryHandler;
 import umc.spring.apiPayload.exception.handler.MemberMissionHandler;
@@ -65,5 +67,13 @@ public class MemberCommandServiceImpl implements MemberCommandService{
                 .build();
 
         return memberMissionRepository.save(memberMission);
+    }
+
+    @Override
+    @Transactional
+    public MemberMission completedMission(Long memberMissionId) {
+        MemberMission memberMission = memberMissionRepository.findById(memberMissionId).orElseThrow(() -> new MemberMissionHandler(ErrorStatus.MEMBER_MISSION_NOT_FOUND));
+        memberMission.setStatus(MissionStatus.COMPLETE);
+        return memberMission;
     }
 }

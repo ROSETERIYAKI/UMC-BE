@@ -21,6 +21,5 @@ public class MissionRestController {
         Mission mission = missionCommandService.createMission(request, storeId);
 
         return ApiResponse.onSuccess(MissionConverter.toMissionResultDTO(mission));
-
     }
 }
