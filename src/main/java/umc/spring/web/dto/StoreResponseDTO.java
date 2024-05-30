@@ -16,4 +16,6 @@ public class StoreResponseDTO {
         private Long storeId;
         private LocalDateTime createdAt;
     }
+
+
 }
