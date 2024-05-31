@@ -38,6 +38,14 @@ public class MemberRestController {
         return ApiResponse.onSuccess(MemberMissionConverter.toMemberMissionResultDTO(memberMission));
     }
 
+    // mission 완료 API
+    @PostMapping("/missions_completed/{memberMissionId}")
+    public ApiResponse<MemberMissionResponseDTO.MemberMissionCompletedResultDTO> completedMission(@PathVariable(name = "memberMissionId")Long memberMissionId){
+        MemberMission memberMission = memberCommandService.completedMission(memberMissionId);
+
+        return ApiResponse.onSuccess(MemberMissionConverter.toMemberMissionCompletedResultDTO(memberMission));
+    }
+
     // 리뷰 작성 API
     @PostMapping("/stores/{storeId}/reviews")
     public ApiResponse<ReviewResponseDTO.ReviewResultDTO> createReview(@RequestBody ReviewRequestDTO.ReviewInfoDTO request, @ExistStore @PathVariable(name = "storeId")Long storeId){

@@ -9,6 +9,7 @@ import umc.spring.domain.Member;
 
 
 @Entity
+@Setter
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

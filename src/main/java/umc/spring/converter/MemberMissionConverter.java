@@ -10,4 +10,11 @@ public class MemberMissionConverter {
                 .createdAt(memberMission.getCreatedAt())
                 .build();
     }
+
+    public static MemberMissionResponseDTO.MemberMissionCompletedResultDTO toMemberMissionCompletedResultDTO(MemberMission memberMission){
+        return MemberMissionResponseDTO.MemberMissionCompletedResultDTO.builder()
+                .MemberMissionId(memberMission.getId())
+                .updatedAt(memberMission.getUpdatedAt())
+                .build();
+    }
 }

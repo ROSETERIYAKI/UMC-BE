@@ -16,4 +16,14 @@ public class MemberMissionResponseDTO {
         public Long MemberMissionId;
         public LocalDateTime createdAt;
     }
+
+    // 미션 완료 요청에 대한 반환 DTO
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MemberMissionCompletedResultDTO{
+        public Long MemberMissionId;
+        public LocalDateTime updatedAt;
+    }
 }
